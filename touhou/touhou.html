@@ -1,0 +1,809 @@
+<!--
+  ✅ コピペ用：白基調シンプルLP（写真の雰囲気に寄せたデザイン）
+  ⚠️重要：このページ内の「カード条件・特典・数値・トーク例・リンク」は検証用のダミー（架空）です。
+  実運用前に必ず公式情報へ差し替えてください。
+-->
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>コミケ 東方｜当日カンペ（検証用ダミー）</title>
+  <meta name="description" content="コミケ当日人員向け：東方Projectの当日カンペ（検証用ダミー）" />
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --shadow:0 10px 30px rgba(15,23,42,.08);
+
+      --primary:#5b5cff;      /* 公式サイトを見る系のボタン */
+      --primary2:#7c3aed;
+      --primaryText:#fff;
+
+      --purpleTint:#f5f1ff;   /* 主要キャラの淡紫 */
+      --purpleLine:#e5d8ff;
+      --pinkTint:#fff1f6;     /* ヒントの淡ピンク */
+      --pinkLine:#ffd6e7;
+      --blueTint:#eff6ff;     /* きっかけの淡ブルー */
+      --blueLine:#cfe3ff;
+
+      --dot:#3b82f6;          /* 箇条書きの青ドット */
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+
+      --radius:18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+                   "Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic","Meiryo", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{ color:inherit; }
+    .wrap{ max-width: 980px; margin:0 auto; padding: 22px 16px 56px; }
+
+    /* Top notice (dummy) */
+    .notice{
+      background: #fff;
+      border:1px solid #ffe4e6;
+      border-left: 6px solid var(--danger);
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom: 16px;
+    }
+    .notice .icon{ font-size:18px; line-height:1; margin-top:2px; }
+    .notice strong{ color:#b91c1c; }
+    .notice p{ margin:0; color: #7f1d1d; font-size: 13px; }
+
+    /* Cards */
+    .section{ margin-top: 14px; }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .h2{
+      margin:0 0 10px;
+      font-size: 18px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .h2 .i{ font-size:18px; }
+    .text{ margin:0; color: var(--text); }
+    .muted{ color: var(--muted); }
+    .sub{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .hr{ height:1px; background: var(--line); margin: 14px 0; }
+
+    /* Button (like screenshot) */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:0;
+      cursor:pointer;
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: var(--primaryText);
+      background: linear-gradient(90deg, var(--primary2), var(--primary));
+      box-shadow: 0 10px 22px rgba(92, 92, 255, .22);
+      font-weight: 700;
+      text-decoration:none;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn.secondary{
+      background: #ffffff;
+      color: var(--text);
+      border:1px solid var(--line);
+      box-shadow:none;
+      font-weight:700;
+    }
+    .btn.small{ padding: 9px 12px; border-radius: 12px; font-size: 13px; }
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+
+    /* Bullets (blue dot) */
+    .bullets{ margin: 0; padding: 0; list-style:none; }
+    .bullets li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding: 10px 0;
+      border-bottom: 1px dashed #eef2f7;
+    }
+    .bullets li:last-child{ border-bottom:0; }
+    .b-dot{
+      margin-top: 6px;
+      width:10px; height:10px; border-radius:50%;
+      background: var(--dot);
+      box-shadow: 0 0 0 4px rgba(59,130,246,.12);
+      flex: 0 0 10px;
+    }
+
+    /* Character TOP3 (purple list blocks) */
+    .rank{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .rank li{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: var(--purpleTint);
+      border: 1px solid var(--purpleLine);
+    }
+    .num{
+      width:36px; height:36px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg, #7c3aed, #5b5cff);
+      color:#fff;
+      font-weight: 900;
+      flex: 0 0 36px;
+    }
+    .rank strong{ font-size: 14px; }
+    .rank span{ color: var(--muted); font-size: 13px; display:block; margin-top: 2px; }
+
+    /* Hint box (pink) */
+    .tint-pink{
+      background: var(--pinkTint);
+      border: 1px solid var(--pinkLine);
+    }
+    .hintlist{ margin:0; padding:0; list-style:none; display:grid; gap:10px; }
+    .hintlist li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 10px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,214,231,.65);
+    }
+    .hintlist .icon{ font-size: 16px; margin-top: 2px; }
+
+    /* Trigger box (blue) */
+    .tint-blue{
+      background: var(--blueTint);
+      border: 1px solid var(--blueLine);
+    }
+    .trigger{
+      margin:0; padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .trigger li{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      background: #fff;
+      border: 1px solid var(--blueLine);
+      border-radius: 14px;
+      padding: 12px 12px;
+    }
+    .trigger .icon{ font-size: 16px; }
+    .trigger .txt{ font-weight: 700; }
+    .trigger .subtxt{ color: var(--muted); font-size: 13px; font-weight: 500; margin-left:6px; }
+
+    /* Talk blocks */
+    .talk{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fbfdff;
+      padding: 14px;
+    }
+    .talk h3{ margin:0 0 8px; font-size: 14px; display:flex; gap:8px; align-items:center; }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background:#fff;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .quote{
+      margin:0;
+      padding: 12px;
+      border-radius: 14px;
+      background:#fff;
+      border:1px dashed #e5e7eb;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+
+    /* Accordion */
+    details{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background:#fff;
+      overflow:hidden;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-weight: 800;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .chev{
+      width:10px; height:10px;
+      border-right:2px solid #94a3b8;
+      border-bottom:2px solid #94a3b8;
+      transform: rotate(45deg);
+      transition: transform .2s ease;
+    }
+    details[open] .chev{ transform: rotate(225deg); }
+    .body{
+      padding: 0 14px 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* QR placeholder */
+    .qr{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap: 14px;
+      align-items:center;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fbfdff;
+    }
+    .qrbox{
+      width:140px; height:140px;
+      border-radius: 16px;
+      border: 1px dashed #cbd5e1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+      background:#fff;
+    }
+
+    /* Form */
+    form{ display:grid; gap:10px; }
+    .row{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    label{ font-size: 12px; color: var(--muted); }
+    select, textarea{
+      width:100%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color: var(--text);
+      outline:none;
+    }
+    textarea{ min-height: 88px; resize: vertical; }
+
+    /* Responsive */
+    @media (max-width: 720px){
+      .row{ grid-template-columns: 1fr; }
+      .qr{ grid-template-columns: 1fr; }
+      .qrbox{ width:100%; }
+    }
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.95);
+      box-shadow: var(--shadow);
+      color: var(--text);
+      font-size: 13px;
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-2px); }
+
+    footer{
+      margin-top: 18px;
+      padding: 14px 4px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ===== Card info (社員向け) ===== */
+    .cards-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 720px){
+      .cards-grid{ grid-template-columns: 1fr; }
+    }
+
+    .mini-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .mini-card h3{
+      margin:0 0 8px;
+      font-size: 15px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap: wrap;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background:#f8fafc;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .cardimg{
+      width:100%;
+      height:auto;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background:#fff;
+      display:block;
+    }
+    .kvline{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .callout{
+      margin-top: 12px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background:#fbfdff;
+      padding: 12px;
+    }
+    .callout strong{ color: var(--text); }
+    .callout .small{ color: var(--muted); font-size: 12px; margin-top: 6px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- ★戻り先（#top）を作る -->
+    <div id="top"></div>
+
+    <!-- ✅ ダミー明記（最上部） -->
+    <div class="notice">
+      <div class="icon">⚠️</div>
+      <p>
+        <strong>検証用ダミー：</strong>
+        このページ内の「カード条件・特典・数値・トーク例・リンク」は<strong>すべて架空</strong>です。実運用前に必ず公式情報へ差し替えてください。
+      </p>
+    </div>
+
+    <!-- 作品概要 -->
+    <section class="section" id="summary">
+      <div class="card">
+        <h2 class="h2"><span class="i">📘</span> 作品概要</h2>
+        <p class="text">
+          「東方Project」は、同人ゲーム発のシリーズ作品（代表：弾幕シューティング）。舞台は「幻想郷」。
+          キャラクターと音楽人気が強く、二次創作文化も非常に大きい作品です。
+          <span class="muted">※この説明はダミー例です（実際の紹介文に差し替え）。</span>
+        </p>
+
+        <div class="btnrow">
+          <a class="btn" href="https://touhou-x.jp/" target="_blank" rel="noopener noreferrer">↗ 公式サイトを見る</a>
+          <a class="btn secondary" href="#card">申込案内へ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ★ここに入れる（作品概要 と 主要キャラ の間） -->
+    <!-- カード券面・特典（社内向け） -->
+    <section class="section" id="cardinfo">
+      <div class="card">
+        <h2 class="h2"><span class="i">🪪</span> カード券面・特典（社内確認用）</h2>
+        <p class="sub">
+          ※このページは<strong>従業員向けカンペ</strong>です。お客様へ案内する際は、条件の断定を避け、必要に応じて公式情報で確認してください。
+        </p>
+
+        <div class="cards-grid">
+          <!-- カード1 -->
+          <div class="mini-card">
+            <h3>
+              カード① 人気キャラクター3人デザイン
+              <span class="tag">lack氏 書き下ろし</span>
+            </h3>
+            <img class="cardimg" src="image/card1.png" alt="カード券面（lack氏 書き下ろし）">
+            <p class="kvline">案内の一言：<strong>「推しがいる・絵柄重視ならこちら」</strong></p>
+          </div>
+
+          <!-- カード2 -->
+          <div class="mini-card">
+            <h3>
+              カード② ちびキャラ勢ぞろいデザイン
+              <span class="tag">ちびキャラ集合</span>
+            </h3>
+            <img class="cardimg" src="image/card2.png" alt="カード券面（ちびキャラ勢ぞろい）">
+            <p class="kvline">案内の一言：<strong>「かわいい系・箱推しならこちら」</strong></p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div>
+            <strong>特典（条件あり）：</strong>
+            新規ご入会・お切り替え後、<strong>3か月以内に累計税込1万円以上</strong>をショッピングでご利用の方に、
+            <strong>券面デザインに対応したマウスパッド（非売品）</strong>をプレゼント（サイズ：<strong>228×170mm</strong>）。
+          </div>
+          <div class="small">
+            ※特典条件の詳細・対象可否などは公式情報で確認してください（社内運用上、断定案内は避ける）。
+          </div>
+        </div>
+
+        <div class="btnrow" style="margin-top:12px;">
+          <a class="btn secondary small" href="https://www.eposcard.co.jp/gecard/touhouproject/index.html" target="_blank" rel="noopener noreferrer">↗ 公式情報を確認</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 主要キャラクターTOP3 -->
+    <section class="section" id="chara">
+      <div class="card">
+        <h2 class="h2"><span class="i">👥</span> 主要キャラクターTOP3</h2>
+        <ol class="rank">
+          <li>
+            <div class="num">1</div>
+            <div>
+              <strong>霊夢：作品の顔となる主人公格（ダミー）</strong>
+              <span>会話の入り口：推し確認「霊夢派？魔理沙派？」（ダミー）</span>
+            </div>
+          </li>
+          <li>
+            <div class="num">2</div>
+            <div>
+              <strong>魔理沙：人気上位の定番キャラクター（ダミー）</strong>
+              <span>会話の入り口：グッズの刺さりやすいワードを用意（ダミー）</span>
+            </div>
+          </li>
+          <li>
+            <div class="num">3</div>
+            <div>
+              <strong>咲夜：クールで支持が厚いキャラクター（ダミー）</strong>
+              <span>会話の入り口：「どの作品から？」の質問が使える（ダミー）</span>
+            </div>
+          </li>
+        </ol>
+        <p class="sub" style="margin-top:10px;">
+          ※TOP3は仮。今回の券面キャラ／当日扱うグッズに合わせて差し替えてください。
+        </p>
+      </div>
+    </section>
+
+    <!-- ファン層の特徴 -->
+    <section class="section" id="fans">
+      <div class="card">
+        <h2 class="h2"><span class="i">🎯</span> ファン層の特徴</h2>
+        <ul class="bullets">
+          <li><span class="b-dot"></span><div>推しキャラ文化が強く、キャラ名に反応しやすい（ダミー）</div></li>
+          <li><span class="b-dot"></span><div>音楽・アレンジ文化が強い（曲の話題が刺さる）（ダミー）</div></li>
+          <li><span class="b-dot"></span><div>作品理解が深い層もいるため、浅い説明は避ける（ダミー）</div></li>
+          <li><span class="b-dot"></span><div>グッズ購買意欲が高い（限定・在庫少なめの訴求が効く）（ダミー）</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ファンと楽しく話すためのヒント（ピンク） -->
+    <section class="section" id="hints">
+      <div class="card tint-pink">
+        <h2 class="h2"><span class="i">💬</span> ファンと楽しく話すためのヒント</h2>
+        <ul class="hintlist">
+          <li><span class="icon">💡</span><div>最初からカードに入らず、<strong>会話→共感→自然に導入</strong>（ダミー）</div></li>
+          <li><span class="icon">💡</span><div>ガチ勢には説明より、<strong>推し・曲・二次創作</strong>など相手の熱量領域に寄せる（ダミー）</div></li>
+          <li><span class="icon">💡</span><div>人気グッズは「限定感」を強調しつつ、押し売りはしない（ダミー）</div></li>
+          <li><span class="icon">💡</span><div>キャラ名・作品名は間違えない（不安なら確認質問で逃げる）（ダミー）</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 会話のきっかけポイント（ブルー） -->
+    <section class="section" id="triggers">
+      <div class="card tint-blue">
+        <h2 class="h2"><span class="i">🌟</span> 会話のきっかけポイント</h2>
+        <ul class="trigger">
+          <li>
+            <span class="icon">💭</span>
+            <div class="txt">「推しいます？」で入る<span class="subtxt">（最短で熱量を拾う／ダミー）</span></div>
+          </li>
+          <li>
+            <span class="icon">💭</span>
+            <div class="txt">「どの作品から？」で入る<span class="subtxt">（会話が続く／ダミー）</span></div>
+          </li>
+          <li>
+            <span class="icon">💭</span>
+            <div class="txt">「この券面かわいくないですか？」で入る<span class="subtxt">（付き添いにも効く／ダミー）</span></div>
+          </li>
+          <li>
+            <span class="icon">💭</span>
+            <div class="txt">迷った人は「QRだけどうぞ」で逃がす<span class="subtxt">（引き止めない／ダミー）</span></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 当日トーク -->
+    <section class="section" id="talk">
+      <div class="card">
+        <h2 class="h2"><span class="i">🗣️</span> 当日トーク（読み上げOK・ダミー）</h2>
+
+        <div class="talk">
+          <h3>30秒トーク <span class="pill">混雑用・固定</span></h3>
+          <p class="quote" id="talk30">「東方ってご存知ですか？“幻想郷”って世界観の作品で、キャラと音楽がすごく人気です。今日のおすすめは（ダミー）◯◯グッズです。もしよければ、東方デザインのカード（ダミー）もあって、今は特典（ダミー）もあります。QRで30秒で概要だけ見れます—よかったらどうぞ！」</p>
+          <div class="btnrow">
+            <button class="btn secondary small" type="button" data-copy="#talk30">コピーする</button>
+            <a class="btn small" href="#card">申込案内へ</a>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="talk">
+          <h3>60秒トーク <span class="pill">空いてる時</span></h3>
+          <p class="quote" id="talk60">「東方は同人ゲーム発でキャラ数が多く、“推し文化”が強い作品です。音楽人気も高くイベントも盛り上がってます。今日のグッズは（ダミー）◯◯が人気で、推しがいる人は刺さりやすいです。
+あと東方券面のカード（ダミー）があって（ダミー）年会費無料＋特典があります。今は混んでるので、まずはQRだけお渡ししますね。あとでゆっくりで大丈夫です！」</p>
+          <div class="btnrow">
+            <button class="btn secondary small" type="button" data-copy="#talk60">コピーする</button>
+            <a class="btn secondary small" href="#gaeshi">切り返しへ</a>
+          </div>
+        </div>
+
+        <p class="sub" style="margin-top:12px;">
+          ※トーク文はダミーです。特典・条件は公式情報に合わせて差し替え、断定表現に注意してください。
+        </p>
+      </div>
+    </section>
+
+    <!-- 反応別 切り返し -->
+    <section class="section" id="gaeshi">
+      <div class="card">
+        <h2 class="h2"><span class="i">🧩</span> 反応別 切り返し（押して開く・ダミー）</h2>
+
+        <details>
+          <summary>「急いでて…」 <span class="chev" aria-hidden="true"></span></summary>
+          <div class="body">
+            <p class="quote" id="g1">「了解です！URLだけお渡しします。あとで見返せる“当日まとめ”になってます！」</p>
+            <div class="btnrow"><button class="btn secondary small" type="button" data-copy="#g1">コピー</button></div>
+          </div>
+        </details>
+
+        <details>
+          <summary>「カードはいいかな…」 <span class="chev" aria-hidden="true"></span></summary>
+          <div class="body">
+            <p class="quote" id="g2">「全然OKです！グッズだけでもぜひ。もし券面が気になったら、情報だけここにまとまってます！」</p>
+            <div class="btnrow"><button class="btn secondary small" type="button" data-copy="#g2">コピー</button></div>
+          </div>
+        </details>
+
+        <details>
+          <summary>「面倒そう…」 <span class="chev" aria-hidden="true"></span></summary>
+          <div class="body">
+            <p class="quote" id="g3">「（ダミー）スマホで完結で最短です。今は混んでるので、まずはQRだけどうぞ！」</p>
+            <div class="btnrow"><button class="btn secondary small" type="button" data-copy="#g3">コピー</button></div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+
+
+    <!-- 15秒投稿 -->
+    <section class="section" id="post">
+      <div class="card">
+        <h2 class="h2"><span class="i">📝</span> 15秒投稿（気づき回収・ダミー保存）</h2>
+        <p class="sub">※このフォームは検証用ダミー実装です（ブラウザのlocalStorageに保存）。実運用はPower Apps/Forms/SharePoint等へ接続してください。</p>
+
+        <form id="postForm">
+          <div class="row">
+            <div>
+              <label for="situation">状況</label>
+              <select id="situation" required>
+                <option value="">選択してください</option>
+                <option>混雑</option>
+                <option>通常</option>
+                <option>閑散</option>
+              </select>
+            </div>
+            <div>
+              <label for="audience">相手タイプ</label>
+              <select id="audience" required>
+                <option value="">選択してください</option>
+                <option>東方ファン</option>
+                <option>付き添い</option>
+                <option>通りすがり</option>
+                <option>コスプレ</option>
+                <option>その他</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="pattern">使った型</label>
+              <select id="pattern" required>
+                <option value="">選択してください</option>
+                <option>30秒トーク</option>
+                <option>60秒トーク</option>
+                <option>QRだけ渡し</option>
+                <option>推し確認から</option>
+              </select>
+            </div>
+            <div>
+              <label for="result">結果</label>
+              <select id="result" required>
+                <option value="">選択してください</option>
+                <option>申込</option>
+                <option>検討（URL渡し）</option>
+                <option>離脱</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="note">一言（任意）：「刺さった一言」or「詰まったポイント」</label>
+            <textarea id="note" placeholder="例）「推しいます？」が強かった／特典の条件で詰まった（ダミー）"></textarea>
+          </div>
+
+          <div class="btnrow">
+            <button class="btn small" type="submit">投稿する（ダミー保存）</button>
+            <button class="btn secondary small" type="button" id="exportBtn">エクスポート（JSON）</button>
+            <button class="btn secondary small" type="button" id="clearBtn">全消去</button>
+          </div>
+
+          <p class="sub" id="countText" style="margin:6px 0 0;">保存件数：0（ダミー）</p>
+        </form>
+
+        <div class="hr"></div>
+        <a class="chip" href="#top">↑ 上に戻る</a>
+      </div>
+    </section>
+
+    <footer>
+      <p style="margin:0;">
+        <strong>【ダミー明記】</strong>このページ内のカード情報・特典・数値・トーク例・リンクはすべて検証用の架空情報です。実運用前に必ず公式情報へ差し替えてください。
+      </p>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // ===== Toast =====
+    const toast = (msg) => {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(window.__t);
+      window.__t = setTimeout(() => el.classList.remove('show'), 1600);
+    };
+
+    // ===== Copy =====
+    document.addEventListener('click', async (e) => {
+      const btn = e.target.closest('[data-copy]');
+      if(!btn) return;
+      const sel = btn.getAttribute('data-copy');
+      const target = document.querySelector(sel);
+      if(!target) return;
+      const text = target.innerText || target.textContent || '';
+      try{
+        await navigator.clipboard.writeText(text);
+        toast('コピーしました');
+      }catch{
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        toast('コピーしました（簡易）');
+      }
+    });
+
+    // ===== Post form (dummy localStorage) =====
+    const KEY = 'touhou_comike_posts_dummy_v1';
+    const form = document.getElementById('postForm');
+    const countText = document.getElementById('countText');
+
+    const loadPosts = () => {
+      try { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+      catch { return []; }
+    };
+    const savePosts = (arr) => localStorage.setItem(KEY, JSON.stringify(arr));
+
+    const updateCount = () => {
+      const n = loadPosts().length;
+      countText.textContent = `保存件数：${n}（ダミー）`;
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const post = {
+        ts: new Date().toISOString(),
+        situation: document.getElementById('situation').value,
+        audience: document.getElementById('audience').value,
+        pattern: document.getElementById('pattern').value,
+        result: document.getElementById('result').value,
+        note: (document.getElementById('note').value || '').trim()
+      };
+      if(!post.situation || !post.audience || !post.pattern || !post.result){
+        toast('必須項目を選択してください');
+        return;
+      }
+      const arr = loadPosts();
+      arr.push(post);
+      savePosts(arr);
+      form.reset();
+      updateCount();
+      toast('投稿ありがとう！（ダミー保存）');
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      const arr = loadPosts();
+      const blob = new Blob([JSON.stringify(arr, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'touhou_comike_posts_dummy.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      toast('JSONを書き出しました');
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      localStorage.removeItem(KEY);
+      updateCount();
+      toast('全消去しました');
+    });
+
+    updateCount();
+  </script>
+</body>
+</html>
