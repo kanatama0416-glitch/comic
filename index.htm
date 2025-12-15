@@ -404,6 +404,61 @@
     }
     .callout strong{ color: var(--text); }
     .callout .small{ color: var(--muted); font-size: 12px; margin-top: 6px; }
+    /* ===== Goods info ===== */
+.goods-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  margin-top: 12px;
+}
+@media (max-width: 720px){
+  .goods-grid{ grid-template-columns: 1fr; }
+}
+.goods-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px;
+}
+.goods-card h3{
+  margin:0 0 8px;
+  font-size: 15px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.price{
+  display:inline-flex;
+  align-items:center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border:1px solid var(--line);
+  background:#f8fafc;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 900;
+}
+.goodsimg{
+  width:100%;
+  height:auto;
+  border-radius: 16px;
+  border:1px solid var(--line);
+  background:#fff;
+  display:block;
+}
+.note{
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.inline-link{
+  text-decoration:none;
+  border-bottom: 1px dashed #cbd5e1;
+  color: var(--text);
+}
+.inline-link:hover{ color: var(--primary2); }
+
   </style>
 </head>
 
@@ -437,6 +492,50 @@
         </div>
       </div>
     </section>
+
+    <!-- 今回販売グッズ（社内確認用） -->
+<section class="section" id="goods">
+  <div class="card">
+    <h2 class="h2"><span class="i">🛍️</span> 今回販売グッズ（社内確認用）</h2>
+    <p class="sub">
+      マルイのアニメ × 東方Project｜<strong>丸井オリジナル制作</strong>｜テーマ：<strong>「年越し」「正月」</strong>
+    </p>
+
+    <div class="goods-grid">
+      <!-- グッズ1 -->
+      <div class="goods-card">
+        <h3>
+          そばにいる年越しセット
+          <span class="price">11,000円(税込)</span>
+        </h3>
+        <img class="goodsimg" src="images/goods_soba.png" alt="そばにいる年越しセット 画像（差し替え）">
+        <p class="note">正式名：そばにいる年越しセット～今年を締めくくる、とっておきの大晦日セット～</p>
+      </div>
+
+      <!-- グッズ2 -->
+      <div class="goods-card">
+        <h3>
+          一緒にまどろむ寝正月セット
+          <span class="price">11,000円(税込)</span>
+        </h3>
+        <img class="goodsimg" src="images/goods_oshogatsu.png" alt="一緒にまどろむ寝正月セット 画像（差し替え）">
+        <p class="note">正式名：一緒にまどろむ寝正月セット～のんびり気ままに迎えるお正月のひとときに～</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div>
+        <strong>購入制限：</strong>おひとりさま各<strong>2点</strong>まで（状況に応じて購入制限の数量は<strong>変更・解除</strong>の可能性あり）
+      </div>
+      <div class="small">
+        最新情報は <strong>X（旧Twitter）</strong> の
+        <a class="inline-link" href="https://x.com/marui_goods" target="_blank" rel="noopener noreferrer">@marui_goods</a>
+        を確認してください。
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- ★ここに入れる（作品概要 と 主要キャラ の間） -->
     <!-- カード券面・特典（社内向け） -->
@@ -807,4 +906,5 @@
   </script>
 </body>
 </html>
+
 
