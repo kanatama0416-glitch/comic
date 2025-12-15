@@ -458,6 +458,15 @@
   color: var(--text);
 }
 .inline-link:hover{ color: var(--primary2); }
+/* goods item list */
+.goods-items{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--text);
+  font-size: 13px;
+}
+.goods-items li{ margin: 4px 0; }
+.goods-items .muted{ color: var(--muted); }
 
   </style>
 </head>
@@ -493,12 +502,15 @@
       </div>
     </section>
 
-    <!-- 今回販売グッズ（社内確認用） -->
+<!-- 今回販売グッズ -->
 <section class="section" id="goods">
   <div class="card">
-    <h2 class="h2"><span class="i">🛍️</span> 今回販売グッズ（社内確認用）</h2>
+    <h2 class="h2"><span class="i">🛍️</span> 今回販売グッズ</h2>
     <p class="sub">
-      マルイのアニメ × 東方Project｜<strong>丸井オリジナル制作</strong>｜テーマ：<strong>「年越し」「正月」</strong>
+      マルイのアニメ × 東方Project｜<strong>丸井オリジナルで作成</strong>｜テーマ：<strong>「年越し」「正月」</strong><br>
+      ※購入制限や内容は変更の可能性あり。最新は
+      <a class="inline-link" href="https://x.com/marui_goods" target="_blank" rel="noopener noreferrer">X @marui_goods</a>
+      を確認。
     </p>
 
     <div class="goods-grid">
@@ -508,8 +520,21 @@
           そばにいる年越しセット
           <span class="price">11,000円(税込)</span>
         </h3>
-        <img class="goodsimg" src="touhou/image/goods_soba.png" alt="そばにいる年越しセット 画像（差し替え）">
-        <p class="note">正式名：そばにいる年越しセット～今年を締めくくる、とっておきの大晦日セット～</p>
+
+        <!-- ✅ ここが重要：フォルダは touhou/image -->
+        <img class="goodsimg" src="touhou/image/goods_soba.png" alt="そばにいる年越しセット 画像">
+
+        <p class="note"><strong>セット内容</strong>（全部違う）</p>
+        <ul class="goods-items">
+          <li>ビックアクスタ</li>
+          <li>アクリルカップ麺蓋おさえ</li>
+          <li>B2タペストリー</li>
+          <li>ポストカード</li>
+          <li>缶バッチ3個セット</li>
+          <li><strong>※ショッパー付き</strong></li>
+        </ul>
+
+        <p class="note">メモ：このセットの<strong>使用イラストは「寝正月セット」と別</strong></p>
       </div>
 
       <!-- グッズ2 -->
@@ -518,30 +543,53 @@
           一緒にまどろむ寝正月セット
           <span class="price">11,000円(税込)</span>
         </h3>
-        <img class="goodsimg" src="touhou/image/goods_oshogatsu.png" alt="一緒にまどろむ寝正月セット 画像（差し替え）">
-        <p class="note">正式名：一緒にまどろむ寝正月セット～のんびり気ままに迎えるお正月のひとときに～</p>
+
+        <!-- ✅ ここが重要：フォルダは touhou/image -->
+        <img class="goodsimg" src="touhou/image/goods_oshogatsu.png" alt="一緒にまどろむ寝正月セット 画像">
+
+        <p class="note"><strong>セット内容</strong>（全部違う）</p>
+        <ul class="goods-items">
+          <li>Tシャツ</li>
+          <li>クリアポスター3枚セット</li>
+          <li>缶バッチ3個セット</li>
+          <li>選べるスマホスタンド</li>
+          <li><strong>※ショッパー付き</strong></li>
+        </ul>
+
+        <p class="note">メモ：このセットの<strong>使用イラストは「年越しセット」と別</strong></p>
       </div>
     </div>
 
     <div class="callout">
+      <div><strong>プッシュポイント（言い切りOK）</strong></div>
+      <ul class="goods-items" style="margin-top:8px;">
+        <li><strong>書き下ろしイラスト</strong></li>
+        <li><strong>丸井オリジナルコラボグッズ（初めて！）</strong></li>
+        <li><strong>ここでしか手に入らない</strong></li>
+      </ul>
+      <div class="small">補足：2セットで<strong>中身も使用イラストも別</strong>なので、推し・好みで案内を分けやすい。</div>
+    </div>
+
+    <div class="callout">
       <div>
-        <strong>購入制限：</strong>おひとりさま各<strong>2点</strong>まで（状況に応じて購入制限の数量は<strong>変更・解除</strong>の可能性あり）
+        <strong>購入制限：</strong>おひとりさま各<strong>2点</strong>（状況に応じて<strong>変更・解除</strong>の可能性あり）
       </div>
       <div class="small">
-        最新情報は <strong>X（旧Twitter）</strong> の
+        最新情報は
         <a class="inline-link" href="https://x.com/marui_goods" target="_blank" rel="noopener noreferrer">@marui_goods</a>
-        を確認してください。
+        を確認。
       </div>
     </div>
   </div>
 </section>
 
 
+
     <!-- ★ここに入れる（作品概要 と 主要キャラ の間） -->
-    <!-- カード券面・特典（社内向け） -->
+    <!-- カード券面・特典-->
     <section class="section" id="cardinfo">
       <div class="card">
-        <h2 class="h2"><span class="i">🪪</span> カード券面・特典（社内確認用）</h2>
+        <h2 class="h2"><span class="i">🪪</span> カード券面・特典</h2>
         <p class="sub">
           ※このページは<strong>従業員向けカンペ</strong>です。お客様へ案内する際は、条件の断定を避け、必要に応じて公式情報で確認してください。
         </p>
@@ -906,6 +954,7 @@
   </script>
 </body>
 </html>
+
 
 
 
