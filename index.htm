@@ -580,38 +580,29 @@
 }
 
 /* 読み上げ文（1行で頭に入る箱） */
-/* 読み上げ吹き出しを「目立つ版」に */
+/* 読み上げ吹き出し（目立つ・左詰め・棒なし版） */
 .flow-say{
   margin: 0;
-  padding: 12px 14px;
+  padding: 12px 14px; /* ←左の余白を増やさない（30px禁止） */
   border-radius: 16px;
+
+  /* ふわっと紫は残す */
   background: linear-gradient(180deg, rgba(124,58,237,.10), rgba(91,92,255,.06));
   border: 1px solid rgba(124,58,237,.28);
   box-shadow: 0 10px 22px rgba(124,58,237,.10);
+
   font-size: 15px;
   font-weight: 900;
   color: var(--text);
-  position: relative;
   line-height: 1.7;
+
+  /* 左棒が出る系の保険 */
+  border-left: 0 !important;
 }
 
-/* 左の強調ライン */
 .flow-say::before{
-  content:"";
-  position:absolute;
-  left: 10px;
-  top: 10px;
-  bottom: 10px;
-  width: 4px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--primary2), var(--primary));
-  opacity: .9;
-}
-
-
-/* 本文がラインとアイコンに被らないように */
-.flow-say{
-  padding-left: 30px;
+  content: none !important; /* ←紫の左棒が擬似要素ならこれで消える */
+  display: none !important;
 }
 
 
@@ -690,15 +681,27 @@ details.flow-step{
   overflow:hidden;
 }
 
-/* summary（閉じている時に見える部分） */
+/* summary（閉じている時に見える部分）：3段にして吹き出しを①の真下へ */
 details.flow-step > summary{
   cursor:pointer;
   list-style:none;
   padding: 12px;
   display:grid;
   grid-template-columns: 46px 1fr;
+  grid-template-areas:
+    "badge title"
+    "say   say"
+    "tap   tap";
   gap: 12px;
   align-items:start;
+}
+details.flow-step > summary::-webkit-details-marker{ display:none; }
+
+details.flow-step > summary .flow-badge{ grid-area: badge; }
+details.flow-step > summary .flow-title{ grid-area: title; margin:0; }
+details.flow-step > summary .flow-say{ grid-area: say; }
+details.flow-step > summary .flow-tap{ grid-area: tap; justify-self:start; }
+
 }
 details.flow-step > summary::-webkit-details-marker{ display:none; }
 
@@ -851,6 +854,19 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
   border: 1px solid rgba(124,58,237,.22);
   background: linear-gradient(180deg, rgba(124,58,237,.08), rgba(91,92,255,.04));
 }
+/* ★summary右側を縦積み（吹き出しが重ならない） */
+.flow-stack{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width: 0;
+}
+
+/* ★「タップで開く」を下に置く */
+.flow-stack .flow-tap{
+  margin-top: 4px;
+  align-self:flex-start;
+}
 
   </style>
 </head>
@@ -858,15 +874,6 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
 <body>
   <div class="wrap">
     <div id="top"></div>
-
-    <div class="notice">
-      <div class="icon">⚠️</div>
-      <p>
-        <strong>重要：</strong>
-        このページ内の「カード条件・特典・数値・トーク例・リンク」は検証用のダミーです。
-        実運用前に必ず公式情報へ差し替えてください。
-      </p>
-    </div>
 
     <!-- HERO -->
     <section class="section" id="hero">
@@ -917,7 +924,6 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
 <section class="section" id="points">
   <div class="card">
     <h2 class="h2"><span class="i">📌</span> 今回のポイント</h2>
-    <p class="sub">まずここだけ頭に入れてから、次の「カード案内の台本」へ進みます。</p>
 
     <!-- ★最重要：入会特典（強調ブロック） -->
     <div class="points-hero">
@@ -927,8 +933,8 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
       </div>
 
       <p class="lead">
-        <strong>会場で手続きした方だけ</strong>に、<strong>書き下ろしイラストの限定カード</strong>が付きます。<br>
-        「<strong>ここでしか手に入らない</strong>」を、いちばん最初に伝える。
+        会場で手続きした方だけに、書き下ろしイラストの限定カードが付きます。<br>
+        「ここでしか手に入らない入会特典」が今回のポイント！。
       </p>
 
       <div class="mini">
@@ -984,153 +990,154 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
 
     <div class="flow">
 
-      <!-- ① Q1 -->
-      <details class="flow-step type-start" open>
-        <summary>
-          <div class="flow-badge">①</div>
-          <div>
-            <div class="flow-headline">
-              <p class="flow-title">所持確認（共通）</p>
-            <p class="flow-say">「東方デザイン（or エポス）カード、お持ちですか？」</p>
-                          <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
-            </div>
-          </div>
-        </summary>
+<div class="flow">
 
-        <div class="flow-body">
-          <div class="branch-grid">
-            <div class="branch">
-              <h4>✖「ある」</h4>
-              <p>→ 利用促進（ポイント案内）</p>
-              <div class="mini">例：「ポイントご利用できますが、今日のお会計で使いますか？」</div>
-            </div>
-            <div class="branch">
-              <h4>〇「ない」</h4>
-              <p>→ 次へ（②へ）</p>
-            </div>
-          </div>
+  <!-- ① Q1 -->
+  <details class="flow-step type-start" open>
+    <summary>
+      <div class="flow-badge">①</div>
+
+      <p class="flow-title">所持確認（共通）</p>
+
+      <p class="flow-say">「東方デザイン（or エポス）カード、お持ちですか？」</p>
+
+      <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+    </summary>
+
+    <div class="flow-body">
+      <div class="branch-grid">
+        <div class="branch">
+          <h4>✖「ある」</h4>
+          <p>→ 利用促進（ポイント案内）</p>
+          <div class="mini">例：「ポイントご利用できますが、今日のお会計で使いますか？」</div>
         </div>
-      </details>
-
-      <!-- ② Q2 -->
-      <details class="flow-step type-apply">
-        <summary>
-          <div class="flow-badge">②</div>
-          <div>
-            <div class="flow-headline">
-              <p class="flow-title">「カード持っていない」→ 申込の可否チェック（スマホ確認）</p>
-            <p class="flow-say">「ちなみに今日スマホお持ちですか？」</p>
-                          <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
-            </div>
-          </div>
-        </summary>
-
-        <div class="flow-body">
-          <div class="branch-grid">
-            <div class="branch">
-              <h4>✖スマホなし</h4>
-              <p>「丸井店舗やインターネットで入会できるので、もしご興味あればまたの機会に」</p>
-              <div class="mini">※今回はスマホ入会のみのため、ここで終了（追わない）</div>
-            </div>
-            <div class="branch">
-              <h4>〇スマホあり</h4>
-              <p>→ 次へ（③へ）</p>
-            </div>
-          </div>
+        <div class="branch">
+          <h4>〇「ない」</h4>
+          <p>→ 次へ（②へ）</p>
         </div>
-      </details>
-
-      <!-- ③ Q3 -->
-      <details class="flow-step type-apply">
-        <summary>
-          <div class="flow-badge">③</div>
-          <div>
-            <div class="flow-headline">
-              <p class="flow-title">スマホあり → その場申込の提案（デザイン提示）</p>
-            <p class="flow-say">「スマホがあれば、この場で東方デザインのカード作れます。お作りしましょうか？」</p>
-                        <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
-            </div>
-                      </div>
-        </summary>
-
-        <div class="flow-body">
-
-          <div class="branch-grid">
-            <div class="branch">
-              <h4>✖きっぱり断る（Noが明確）</h4>
-              <p>「承知しました！また気が向いたらいつでもどうぞ〜」</p>
-              <div class="mini">※終了（深追いしない）</div>
-            </div>
-
-            <div class="branch">
-              <h4>〇止まる・考える（迷いがある）</h4>
-              <p>→ 次の「限定特典」を短く提示（④へ）</p>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <!-- ④ D -->
-      <details class="flow-step type-benefit">
-        <summary>
-          <div class="flow-badge">④</div>
-          <div>
-            <div class="flow-headline">
-              <p class="flow-title">止まる・考える（迷いがある）→ 限定特典で背中押し</p>
-            <p class="flow-say">「コミケ会場で入会した方だけの限定特典が付くんですよ」</p>
-                    <div class="flow-body">
-          <p class="flow-note">※ここで特典の現物を見せる</p>
-
-          <p class="flow-say">「カード自体はいつでも作れるんですが、この特典が付くのはコミケ会場の今回限りなんです」</p>
-          <p class="flow-say" style="margin-top:10px;">「よかったら、今このまま作りますか？（作らなくても全然大丈夫です）」</p>
-                        <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
-            </div>
-                      </div>
-        </summary>
-
-
-          <div class="branch-grid" style="margin-top:10px;">
-            <div class="branch">
-              <h4>断る</h4>
-              <p>「承知しました！また気になったら声かけてください」</p>
-              <div class="mini">※終了（深追いしない）</div>
-            </div>
-            <div class="branch">
-              <h4>作りたい気持ち強め</h4>
-              <p>→ ⑤へ（説明フェーズ）</p>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <!-- ⑤ E -->
-      <details class="flow-step type-explain">
-        <summary>
-          <div class="flow-badge">⑤</div>
-          <div>
-            <div class="flow-headline">
-              <p class="flow-title">エポスカードの必須の説明</p>
-            <p class="flow-say">「エポスカードについてご説明しますね！」</p>
-          </div>
-        </summary>
-
-      </details>
-        
-          <p class="flow-say" style="margin-top:10px;">「ここまでで気になる点ありますか？」</p>
-          <p class="flow-note"><span class="endpill">✅ OKなら手続きへ</span></p>
-        </div>
-      </details>
-
+      </div>
     </div>
+  </details>
 
-    <div class="btnrow">
-      <a class="btn secondary small" href="#top">↑ 上に戻る</a>
-      <a class="btn secondary small" href="#goods">↓ 次：販売グッズへ</a>
+  <!-- ② Q2 -->
+  <details class="flow-step type-apply">
+    <summary>
+      <div class="flow-badge">②</div>
+
+      <p class="flow-title">「カード持っていない」→ 申込の可否チェック（スマホ確認）</p>
+
+      <p class="flow-say">「ちなみに今日スマホお持ちですか？」</p>
+
+      <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+    </summary>
+
+    <div class="flow-body">
+      <div class="branch-grid">
+        <div class="branch">
+          <h4>✖スマホなし</h4>
+          <p>「丸井店舗やインターネットで入会できるので、もしご興味あればまたの機会に」</p>
+          <div class="mini">※今回はスマホ入会のみのため、ここで終了（追わない）</div>
+        </div>
+        <div class="branch">
+          <h4>〇スマホあり</h4>
+          <p>→ 次へ（③へ）</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ③ Q3 -->
+  <details class="flow-step type-apply">
+    <summary>
+      <div class="flow-badge">③</div>
+
+      <p class="flow-title">スマホあり → その場申込の提案（デザイン提示）</p>
+
+      <p class="flow-say">「スマホがあれば、この場で東方デザインのカード作れます。お作りしましょうか？」</p>
+
+      <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+    </summary>
+
+    <div class="flow-body">
+      <div class="branch-grid">
+        <div class="branch">
+          <h4>✖きっぱり断る（Noが明確）</h4>
+          <p>「承知しました！また気が向いたらいつでもどうぞ〜」</p>
+          <div class="mini">※終了（深追いしない）</div>
+        </div>
+
+        <div class="branch">
+          <h4>〇止まる・考える（迷いがある）</h4>
+          <p>→ 次の「限定特典」を短く提示（④へ）</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+<!-- ④ D -->
+<details class="flow-step type-benefit">
+  <summary>
+    <div class="flow-badge">④</div>
+
+    <!-- ★右側は縦積みにする -->
+    <div class="flow-stack">
+      <p class="flow-title">止まる・考える（迷いがある）→ 限定特典で背中押し</p>
+
+      <p class="flow-say">「コミケ会場で入会した方だけの限定特典が付くんですよ」</p>
+
+      <!-- ★この2行は折りたたまない：summary内に置く -->
+      <p class="flow-say">「カード自体はいつでも作れるんですが、この特典が付くのはコミケ会場の今回限りなんです」</p>
+
+      <p class="flow-say">「よかったら、今このまま作りますか？（作らなくても全然大丈夫です）」</p>
+
+      <!-- ★タップは一番下 -->
+      <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+    </div>
+  </summary>
+
+  <!-- 折りたたむのはここだけ -->
+
+    <div class="branch-grid" style="margin-top:1px;">
+      <div class="branch">
+        <h4>断る</h4>
+        <p>「承知しました！また気になったら声かけてください」</p>
+        <div class="mini">※終了（深追いしない）</div>
+      </div>
+      <div class="branch">
+        <h4>作りたい気持ち強め</h4>
+        <p>→ ⑤へ（説明フェーズ）</p>
+      </div>
     </div>
   </div>
-</section>
+</details>
 
-<!-- 作品概要（25周年強調版） -->
+
+
+  <!-- ⑤ 必須説明 -->
+  <details class="flow-step type-explain">
+    <summary>
+      <div class="flow-badge">⑤</div>
+
+      <p class="flow-title">エポスカードの必須の説明（安心して進める5点）</p>
+
+      <p class="flow-say">「では作る前に、大事なところだけご説明しますね」</p>
+
+      <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+    </summary>
+
+
+      <p class="flow-say" style="margin-top:10px;">「ここまでで気になる点ありますか？」</p>
+      <p class="flow-note"><span class="endpill">✅ OKなら手続きへ</span></p>
+    </div>
+  </details>
+
+</div>
+
+
+    </section>
+    
+    
+    <!-- 作品概要（25周年強調版） -->
 <section class="section" id="summary">
   <div class="card summary-card">
     <div class="summary-head">
@@ -1171,7 +1178,6 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
   </div>
 </section>
 
-    </section>
 
     <!-- 今回販売グッズ -->
     <section class="section" id="goods">
@@ -1188,7 +1194,7 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
           <div class="goods-card">
             <h3>そばにいる年越しセット <span class="price">11,000円(税込)</span></h3>
             <img class="goodsimg" src="touhou/image/goods_soba.png" alt="そばにいる年越しセット 画像">
-            <p class="note"><strong>セット内容</strong>（全部違う）</p>
+            <p class="note"><strong>セット内容</strong></p>
             <ul class="goods-items">
               <li>ビックアクスタ</li>
               <li>アクリルカップ麺蓋おさえ</li>
@@ -1197,7 +1203,6 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
               <li>缶バッチ3個セット</li>
               <li><strong>※ショッパー付き</strong></li>
             </ul>
-            <p class="note">メモ：このセットの<strong>使用イラストは「寝正月セット」と別</strong></p>
           </div>
 
           <div class="goods-card">
@@ -1211,7 +1216,6 @@ details.flow-step[open] .flow-say{ margin-bottom: 10px; }
               <li>選べるスマホスタンド</li>
               <li><strong>※ショッパー付き</strong></li>
             </ul>
-            <p class="note">メモ：このセットの<strong>使用イラストは「年越しセット」と別</strong></p>
           </div>
         </div>
 
