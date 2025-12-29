@@ -972,6 +972,11 @@ strong, b{
 .points-hero .lead{
   font-weight: 700;
 }
+/* ④：flow-stack内の吹き出しが狭い問題を解消（バッジ+gap分を取り戻す） */
+details.flow-step.type-benefit > summary .flow-stack .flow-say{
+  margin-left: -58px;            /* 46px(バッジ) + 12px(gap) */
+  width: calc(100% + 58px);
+}
 
   </style>
 </head>
@@ -1403,5 +1408,6 @@ strong, b{
   </script>
 </body>
 </html>
+
 
 
