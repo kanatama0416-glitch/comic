@@ -1,4 +1,4 @@
-<!--
+<!--  
   ✅ コピペ用：白基調シンプルLP（写真の雰囲気に寄せたデザイン）
   ⚠️重要：このページ内の「カード条件・特典・数値・トーク例・リンク」は検証用のダミー（架空）です。
   実運用前に必ず公式情報へ差し替えてください。
@@ -8,8 +8,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>コミケ 東方）</title>
-  <meta name="description" content="コミケ当日人員向け：東方Project）" />
+  <title>コミケ 東方</title>
+  <meta name="description" content="コミケ当日人員向け：東方Project" />
   <style>
     :root{
       --bg:#f6f7fb;
@@ -19,18 +19,18 @@
       --line:#e5e7eb;
       --shadow:0 10px 30px rgba(15,23,42,.08);
 
-      --primary:#5b5cff;      /* 公式サイトを見る系のボタン */
+      --primary:#5b5cff;
       --primary2:#7c3aed;
       --primaryText:#fff;
 
-      --purpleTint:#f5f1ff;   /* 主要キャラの淡紫 */
+      --purpleTint:#f5f1ff;
       --purpleLine:#e5d8ff;
-      --pinkTint:#fff1f6;     /* ヒントの淡ピンク */
+      --pinkTint:#fff1f6;
       --pinkLine:#ffd6e7;
-      --blueTint:#eff6ff;     /* きっかけの淡ブルー */
+      --blueTint:#eff6ff;
       --blueLine:#cfe3ff;
 
-      --dot:#3b82f6;          /* 箇条書きの青ドット */
+      --dot:#3b82f6;
       --good:#22c55e;
       --warn:#f59e0b;
       --danger:#ef4444;
@@ -39,6 +39,7 @@
     }
 
     *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; } /* アンカーを滑らかに */
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -69,7 +70,10 @@
     .notice p{ margin:0; color: #7f1d1d; font-size: 13px; }
 
     /* Cards */
-    .section{ margin-top: 14px; }
+    .section{
+      margin-top: 14px;
+      scroll-margin-top: 14px; /* 飛んだ時の見切れ防止 */
+    }
     .card{
       background: var(--card);
       border: 1px solid var(--line);
@@ -94,7 +98,7 @@
     }
     .hr{ height:1px; background: var(--line); margin: 14px 0; }
 
-    /* Button (like screenshot) */
+    /* Button */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -121,7 +125,7 @@
     .btn.small{ padding: 9px 12px; border-radius: 12px; font-size: 13px; }
     .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
 
-    /* Bullets (blue dot) */
+    /* Bullets */
     .bullets{ margin: 0; padding: 0; list-style:none; }
     .bullets li{
       display:flex;
@@ -139,7 +143,7 @@
       flex: 0 0 10px;
     }
 
-    /* Character TOP3 (purple list blocks) */
+    /* Character TOP3 */
     .rank{
       margin:0;
       padding:0;
@@ -170,180 +174,16 @@
     .rank strong{ font-size: 14px; }
     .rank span{ color: var(--muted); font-size: 13px; display:block; margin-top: 2px; }
 
-    /* Hint box (pink) */
-    .tint-pink{
-      background: var(--pinkTint);
-      border: 1px solid var(--pinkLine);
-    }
-    .hintlist{ margin:0; padding:0; list-style:none; display:grid; gap:10px; }
-    .hintlist li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding: 10px 10px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(255,214,231,.65);
-    }
-    .hintlist .icon{ font-size: 16px; margin-top: 2px; }
-
-    /* Trigger box (blue) */
-    .tint-blue{
-      background: var(--blueTint);
-      border: 1px solid var(--blueLine);
-    }
-    .trigger{
-      margin:0; padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .trigger li{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      background: #fff;
-      border: 1px solid var(--blueLine);
-      border-radius: 14px;
-      padding: 12px 12px;
-    }
-    .trigger .icon{ font-size: 16px; }
-    .trigger .txt{ font-weight: 700; }
-    .trigger .subtxt{ color: var(--muted); font-size: 13px; font-weight: 500; margin-left:6px; }
-
-    /* Talk blocks */
-    .talk{
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: #fbfdff;
-      padding: 14px;
-    }
-    .talk h3{ margin:0 0 8px; font-size: 14px; display:flex; gap:8px; align-items:center; }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 3px 8px;
-      border-radius: 999px;
+    /* Callout */
+    .callout{
+      margin-top: 12px;
       border:1px solid var(--line);
-      background:#fff;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 700;
-    }
-    .quote{
-      margin:0;
+      border-radius: 16px;
+      background:#fbfdff;
       padding: 12px;
-      border-radius: 14px;
-      background:#fff;
-      border:1px dashed #e5e7eb;
-      white-space: pre-wrap;
-      font-size: 14px;
     }
-
-    /* Accordion */
-    details{
-      border:1px solid var(--line);
-      border-radius: 16px;
-      background:#fff;
-      overflow:hidden;
-    }
-    details + details{ margin-top: 10px; }
-    summary{
-      cursor:pointer;
-      list-style:none;
-      padding: 12px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      font-weight: 800;
-    }
-    summary::-webkit-details-marker{ display:none; }
-    .chev{
-      width:10px; height:10px;
-      border-right:2px solid #94a3b8;
-      border-bottom:2px solid #94a3b8;
-      transform: rotate(45deg);
-      transition: transform .2s ease;
-    }
-    details[open] .chev{ transform: rotate(225deg); }
-    .body{
-      padding: 0 14px 14px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* QR placeholder */
-    .qr{
-      display:grid;
-      grid-template-columns: 140px 1fr;
-      gap: 14px;
-      align-items:center;
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: #fbfdff;
-    }
-    .qrbox{
-      width:140px; height:140px;
-      border-radius: 16px;
-      border: 1px dashed #cbd5e1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      color: var(--muted);
-      font-size: 12px;
-      background:#fff;
-    }
-
-    /* Form */
-    form{ display:grid; gap:10px; }
-    .row{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-    label{ font-size: 12px; color: var(--muted); }
-    select, textarea{
-      width:100%;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background:#fff;
-      color: var(--text);
-      outline:none;
-    }
-    textarea{ min-height: 88px; resize: vertical; }
-
-    /* Responsive */
-    @media (max-width: 720px){
-      .row{ grid-template-columns: 1fr; }
-      .qr{ grid-template-columns: 1fr; }
-      .qrbox{ width:100%; }
-    }
-
-    /* Toast */
-    .toast{
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.95);
-      box-shadow: var(--shadow);
-      color: var(--text);
-      font-size: 13px;
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity .18s ease, transform .18s ease;
-    }
-    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-2px); }
-
-    footer{
-      margin-top: 18px;
-      padding: 14px 4px 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
+    .callout strong{ color: var(--text); }
+    .callout .small{ color: var(--muted); font-size: 12px; margin-top: 6px; }
 
     /* ===== Card info (社員向け) ===== */
     .cards-grid{
@@ -355,7 +195,6 @@
     @media (max-width: 720px){
       .cards-grid{ grid-template-columns: 1fr; }
     }
-
     .mini-card{
       background:#fff;
       border:1px solid var(--line);
@@ -395,90 +234,622 @@
       font-size: 13px;
     }
 
-    .callout{
-      margin-top: 12px;
-      border:1px solid var(--line);
-      border-radius: 16px;
-      background:#fbfdff;
-      padding: 12px;
-    }
-    .callout strong{ color: var(--text); }
-    .callout .small{ color: var(--muted); font-size: 12px; margin-top: 6px; }
     /* ===== Goods info ===== */
-.goods-grid{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:12px;
-  margin-top: 12px;
-}
-@media (max-width: 720px){
-  .goods-grid{ grid-template-columns: 1fr; }
-}
-.goods-card{
-  background:#fff;
-  border:1px solid var(--line);
+    .goods-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 720px){
+      .goods-grid{ grid-template-columns: 1fr; }
+    }
+    .goods-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .goods-card h3{
+      margin:0 0 8px;
+      font-size: 15px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .price{
+      display:inline-flex;
+      align-items:center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background:#f8fafc;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .goodsimg{
+      width:100%;
+      height:auto;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background:#fff;
+      display:block;
+    }
+    .note{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .inline-link{
+      text-decoration:none;
+      border-bottom: 1px dashed #cbd5e1;
+      color: var(--text);
+    }
+    .inline-link:hover{ color: var(--primary2); }
+    .goods-items{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 13px;
+    }
+    .goods-items li{ margin: 4px 0; }
+    .goods-items .muted{ color: var(--muted); }
+
+    /* ===== Hero image ===== */
+    .hero{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* ===== TOC（ここを修正：縦並び＆隙間を圧縮＆クリック可能） ===== */
+    .toc{
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px 16px;
+    }
+    .toc .h2{ margin-bottom: 8px; }
+
+    .chips{
+      display:grid;
+      grid-template-columns: 1fr; /* 常に縦 */
+      gap:10px;                  /* 隙間小さく */
+      margin-top: 10px;
+    }
+    .chip{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 12px 14px;        /* 高さを圧縮 */
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      text-decoration:none;
+      font-weight: 900;
+      font-size: 14px;
+      cursor:pointer;
+    }
+    .chip:hover{ border-color:#cbd5e1; }
+    .chip:active{ transform: translateY(1px); }
+
+    .chip .right{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex: 0 0 auto;
+    }
+    .chip small{
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 12px;
+    }
+    .chip .arrow{
+      color:#94a3b8;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    /* ===== Points grid ===== */
+    .points-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 720px){
+      .points-grid{ grid-template-columns: 1fr; }
+    }
+    .pointbox{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .pointbox h3{
+      margin:0 0 8px;
+      font-size: 15px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .pointbox ul{
+      margin:0;
+      padding-left: 18px;
+      font-size: 13px;
+    }
+    .pointbox li{ margin: 6px 0; }
+
+    /* ===== Card flow script ===== */
+    .script{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fbfdff;
+      padding: 14px;
+      margin-top: 12px;
+    }
+    .script .step{
+      display:flex;
+      gap:12px;
+      padding: 10px 0;
+      border-bottom: 1px dashed #eef2f7;
+    }
+    .script .step:last-child{ border-bottom:0; }
+    .badge{
+      width:28px; height:28px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      border:1px solid var(--line);
+      font-weight: 900;
+      color: var(--muted);
+      flex: 0 0 28px;
+      margin-top: 2px;
+    }
+    .say{
+      margin:0;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background:#fff;
+      border:1px dashed #e5e7eb;
+      white-space: pre-wrap;
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 750;
+    }
+    .aside{
+      margin:6px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    /* ===== Points 強調：入会特典を最重要として見せる ===== */
+.points-hero{
+  margin-top: 10px;
+  padding: 16px;
   border-radius: 18px;
-  padding: 14px;
+  border: 1px solid #e9d5ff;
+  background: linear-gradient(180deg, rgba(124,58,237,.10), rgba(91,92,255,.06));
+  box-shadow: 0 14px 30px rgba(124,58,237,.12);
 }
-.goods-card h3{
-  margin:0 0 8px;
-  font-size: 15px;
+
+.points-hero .topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom: 10px;
+}
+
+.badge-hot{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(124,58,237,.25);
+  background: rgba(255,255,255,.8);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.badge-hot .dot{
+  width:8px;height:8px;border-radius:50%;
+  background: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(124,58,237,.12);
+}
+
+.points-hero h3{
+  margin: 0;
+  font-size: 16px;
   display:flex;
   align-items:center;
   gap:8px;
-  flex-wrap:wrap;
 }
-.price{
-  display:inline-flex;
-  align-items:center;
-  padding: 3px 10px;
-  border-radius: 999px;
+
+.points-hero .lead{
+  margin: 0;
+  color: var(--text);
+  font-weight: 850;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.points-hero .subline{
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.points-hero .mini{
+  margin-top: 12px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:10px;
+}
+
+@media (max-width: 720px){
+  .points-hero .mini{ grid-template-columns: 1fr; }
+}
+
+.mini-pill{
+  border-radius: 14px;
+  border:1px solid rgba(124,58,237,.18);
+  background: rgba(255,255,255,.7);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.mini-pill small{
+  display:block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* 既存のpoints-gridを少し詰める（間延び防止） */
+.points-grid{ margin-top: 12px; }
+.pointbox ul{ margin-top: 6px; }
+.pointbox li{ margin: 5px 0; }
+
+/* ===== Cardflow（全体フロー：迷わない版 / モバイル最適） ===== */
+.flow{
+  margin-top: 12px;
+  display:grid;
+  gap:12px;
+}
+
+/* 1ステップ（左に番号/右に内容） */
+.flow-step{
+  display:grid;
+  grid-template-columns: 46px 1fr;
+  gap:12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+/* 強調の種類（左ライン） */
+.flow-step.type-start{ border-left: 6px solid #3b82f6; }
+.flow-step.type-point{ border-left: 6px solid #22c55e; }
+.flow-step.type-apply{ border-left: 6px solid #7c3aed; }
+.flow-step.type-benefit{ border-left: 6px solid #f59e0b; }
+.flow-step.type-explain{ border-left: 6px solid #0ea5e9; }
+.flow-step.type-end{ border-left: 6px solid #94a3b8; background:#fbfdff; }
+
+/* 左のバッジ */
+.flow-badge{
+  width:46px;height:46px;
+  border-radius: 14px;
   border:1px solid var(--line);
   background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight: 900;
+  font-size: 12px;
   color: var(--text);
-  font-size: 11px;
+}
+
+/* 見出し/補足 */
+.flow-title{
+  margin:0 0 6px;
+  font-weight: 900;
+  font-size: 14px;
+}
+.flow-note{
+  margin:6px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* 読み上げ文（1行で頭に入る箱） */
+/* 読み上げ吹き出しを「目立つ版」に */
+.flow-say{
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(124,58,237,.10), rgba(91,92,255,.06));
+  border: 1px solid rgba(124,58,237,.28);
+  box-shadow: 0 10px 22px rgba(124,58,237,.10);
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--text);
+  position: relative;
+  line-height: 1.7;
+}
+
+/* 左の強調ライン */
+.flow-say::before{
+  content:"";
+  position:absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--primary2), var(--primary));
+  opacity: .9;
+}
+
+
+/* 本文がラインとアイコンに被らないように */
+.flow-say{
+  padding-left: 30px;
+}
+
+
+/* 分岐：カード */
+.branch-grid{
+  margin-top: 10px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+@media (max-width: 720px){
+  .branch-grid{ grid-template-columns: 1fr; }
+}
+
+.branch{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:#fbfdff;
+  padding: 10px 10px;
+}
+.branch h4{
+  margin:0 0 6px;
+  font-size: 13px;
   font-weight: 900;
 }
-.goodsimg{
-  width:100%;
-  height:auto;
-  border-radius: 16px;
-  border:1px solid var(--line);
-  background:#fff;
-  display:block;
+.branch p{
+  margin:0;
+  font-size: 13px;
+  color: var(--text);
 }
-.note{
-  margin: 10px 0 0;
+.branch .mini{
+  margin-top: 6px;
+  font-size: 12px;
   color: var(--muted);
-  font-size: 13px;
 }
-.inline-link{
-  text-decoration:none;
-  border-bottom: 1px dashed #cbd5e1;
-  color: var(--text);
-}
-.inline-link:hover{ color: var(--primary2); }
-/* goods item list */
-.goods-items{
-  margin: 10px 0 0;
-  padding-left: 18px;
-  color: var(--text);
-  font-size: 13px;
-}
-.goods-items li{ margin: 4px 0; }
-.goods-items .muted{ color: var(--muted); }
-/* ===== Hero image ===== */
-.hero{
-  background:#fff;
+
+/* 終了ピル */
+.endpill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 10px;
+  border-radius: 999px;
   border:1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  background:#fff;
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+/* 固定説明5点（チェックリスト） */
+.fixed5{
+  margin-top: 10px;
+  display:grid;
+  gap:10px;
+}
+.fixed5 .box{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:#fff;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+.fixed5 .box strong{ font-weight: 900; }
+.fixed5 .box small{
+  display:block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+}
+/* ===== Flow step をトグル（details）化：崩れ修正版 ===== */
+/* 重要：.flow-step が display:grid なので、details だけは block に上書きして崩れ防止 */
+details.flow-step{
+  display:block;     /* ← これがないと body が右に飛んで崩れる */
+  padding:0;         /* summary側で余白を持つ */
   overflow:hidden;
 }
-.hero img{
-  width:100%;
-  height:auto;
-  display:block;
+
+/* summary（閉じている時に見える部分） */
+details.flow-step > summary{
+  cursor:pointer;
+  list-style:none;
+  padding: 12px;
+  display:grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  align-items:start;
+}
+details.flow-step > summary::-webkit-details-marker{ display:none; }
+
+/* 開いた時：summary下に区切り線 */
+details.flow-step[open] > summary{
+  border-bottom: 1px dashed #eef2f7;
+}
+
+/* 右上：タップ表示＋矢印（PC） */
+.flow-headline{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+}
+
+/* モバイル：タイトルが縦に潰れるのを防ぐ（タップピルを下に落とす） */
+@media (max-width: 720px){
+  .flow-headline{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .flow-tap{
+    padding: 5px 9px;
+    font-size: 11px;
+  }
+}
+
+/* タップピル */
+.flow-tap{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+/* 矢印 */
+.flow-chev{
+  width:10px; height:10px;
+  border-right:2px solid #94a3b8;
+  border-bottom:2px solid #94a3b8;
+  transform: rotate(45deg);
+  transition: transform .2s ease;
+}
+details.flow-step[open] .flow-chev{ transform: rotate(225deg); }
+
+/* 本文（開いた時に出る部分） */
+.flow-body{
+  padding: 12px;
+  padding-top: 10px;
+  margin-left: 58px; /* badge(46)+gap(12) 分だけインデントして揃える */
+}
+
+/* モバイルは横幅優先でインデントを弱める（読みやすさ優先） */
+@media (max-width: 720px){
+  .flow-body{ margin-left: 0; }
+}
+
+/* flow-title / flow-say の余白微調整 */
+details.flow-step .flow-title{ margin:0 0 6px; }
+details.flow-step .flow-say{ margin:0; }
+details.flow-step[open] .flow-say{ margin-bottom: 10px; }
+
+/* ===== 作品概要（25周年強調） ===== */
+.summary-card{
+  position: relative;
+  overflow: hidden;
+}
+
+.summary-card::before{
+  content:"";
+  position:absolute;
+  inset:-60px -60px auto auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(124,58,237,.18), rgba(91,92,255,.00) 70%);
+}
+
+.summary-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom: 10px;
+}
+
+.anniv{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(124,58,237,.25);
+  background: rgba(124,58,237,.10);
+  font-weight: 900;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.summary-lead{
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 750;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.summary-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 720px){
+  .summary-grid{ grid-template-columns: 1fr; }
+}
+
+.summary-item{
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fbfdff;
+  padding: 12px 12px;
+}
+
+.summary-item .k{
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.summary-item .v{
+  font-size: 14px;
+  font-weight: 850;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.summary-callout{
+  margin-top: 12px;
+  border: 1px solid rgba(124,58,237,.22);
+  background: linear-gradient(180deg, rgba(124,58,237,.08), rgba(91,92,255,.04));
 }
 
   </style>
@@ -486,119 +857,382 @@
 
 <body>
   <div class="wrap">
-    <!-- ★戻り先（#top）を作る -->
     <div id="top"></div>
 
+    <div class="notice">
+      <div class="icon">⚠️</div>
+      <p>
+        <strong>重要：</strong>
+        このページ内の「カード条件・特典・数値・トーク例・リンク」は検証用のダミーです。
+        実運用前に必ず公式情報へ差し替えてください。
+      </p>
+    </div>
 
+    <!-- HERO -->
     <section class="section" id="hero">
-  <div class="hero">
-    <img src="touhou/image/hero.png" alt="コミックマーケット107 マルイノアニメ 東方Project（告知画像）">
+      <div class="hero">
+        <img src="touhou/image/hero.png" alt="コミックマーケット107 マルイノアニメ 東方Project（告知画像）">
+      </div>
+    </section>
+
+    <!-- 目次（ジャンプ）※ここを修正：aタグに変更 -->
+    <section class="section" id="toc">
+      <div class="toc">
+        <h2 class="h2"><span class="i">🧭</span> 目次（タップで移動）</h2>
+
+        <div class="chips">
+          <a class="chip" href="#points">
+            <span>今回のポイント</span>
+            <span class="right"><small>先に把握</small><span class="arrow">›</span></span>
+          </a>
+
+          <a class="chip" href="#cardflow">
+            <span>カード案内の台本</span>
+            <span class="right"><small>読み上げ</small><span class="arrow">›</span></span>
+          </a>
+
+          <a class="chip" href="#goods">
+            <span>販売グッズ</span>
+            <span class="right"><small>商品情報</small><span class="arrow">›</span></span>
+          </a>
+
+          <a class="chip" href="#cardinfo">
+            <span>カード券面・特典</span>
+            <span class="right"><small>公式確認</small><span class="arrow">›</span></span>
+          </a>
+
+          <a class="chip" href="#summary">
+            <span>作品概要</span>
+            <span class="right"><small>概要</small><span class="arrow">›</span></span>
+          </a>
+        </div>
+
+        <p class="sub" style="margin-top:10px;">
+          ※このページは<strong>店員（従業員）向け</strong>です。お客様へ見せる想定ではありません。
+        </p>
+      </div>
+    </section>
+
+<!-- 今回のポイント（先に頭に入れる） -->
+<section class="section" id="points">
+  <div class="card">
+    <h2 class="h2"><span class="i">📌</span> 今回のポイント</h2>
+    <p class="sub">まずここだけ頭に入れてから、次の「カード案内の台本」へ進みます。</p>
+
+    <!-- ★最重要：入会特典（強調ブロック） -->
+    <div class="points-hero">
+      <div class="topline">
+        <h3>🎁 会場入会の限定特典</h3>
+        <span class="badge-hot"><span class="dot"></span>いちばんの推しポイント</span>
+      </div>
+
+      <p class="lead">
+        <strong>会場で手続きした方だけ</strong>に、<strong>書き下ろしイラストの限定カード</strong>が付きます。<br>
+        「<strong>ここでしか手に入らない</strong>」を、いちばん最初に伝える。
+      </p>
+
+      <div class="mini">
+        <div class="mini-pill">✅ いまこの場で
+          <small>会場で手続きが条件。カードはいつでも作れるが、特典はここでだけ</small>
+        </div>
+        <div class="mini-pill">✅ 限定の書き下ろし
+          <small>ほかの場所では手に入らない</small>
+        </div>
+        <div class="mini-pill">✅ 30,31日のコミケのみの特典
+          <small>会場へ足を運んでいただいた方への特典</small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 通常のポイント（カード/グッズ） -->
+    <div class="points-grid">
+      <div class="pointbox">
+        <h3>🪪 カード関連</h3>
+        <ul>
+          <li><strong>東方デザイン券面あり</strong>（絵柄で選べる）</li>
+          <li><strong>入会特典あり</strong>（上の会場限定を最優先で案内）</li>
+          <li><strong>2,000円OFFクーポンはなし</strong>（案内しないよう注意）</li>
+        </ul>
+      </div>
+
+      <div class="pointbox">
+        <h3>🛍️ グッズ関連</h3>
+        <ul>
+          <li><strong>書き下ろしイラスト</strong></li>
+          <li><strong>ここでしか買えない限定品</strong></li>
+          <li><strong>丸井のオリジナルグッズ</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="btnrow">
+      <a class="btn secondary small" href="#cardflow">↓ 次：カード案内の台本へ</a>
+      <a class="btn secondary small" href="#top">↑ 上に戻る</a>
+    </div>
   </div>
 </section>
 
 
-    <!-- 作品概要 -->
-    <section class="section" id="summary">
+<!-- カード案内の台本（全体フロー：判断が迷わない版） -->
+<section class="section" id="cardflow">
+  <div class="card">
+    <h2 class="h2"><span class="i">🗺️</span> カード案内の台本（判断が迷わない版）</h2>
+    <p class="sub">
+      上から順に読むだけでOK。<strong>分岐は「ある/ない」「スマホある/ない」「反応」だけ</strong>に固定。
+    </p>
+
+    <div class="flow">
+
+      <!-- ① Q1 -->
+      <details class="flow-step type-start" open>
+        <summary>
+          <div class="flow-badge">①</div>
+          <div>
+            <div class="flow-headline">
+              <p class="flow-title">所持確認（共通）</p>
+            <p class="flow-say">「東方デザイン（or エポス）カード、お持ちですか？」</p>
+                          <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+            </div>
+          </div>
+        </summary>
+
+        <div class="flow-body">
+          <div class="branch-grid">
+            <div class="branch">
+              <h4>✖「ある」</h4>
+              <p>→ 利用促進（ポイント案内）</p>
+              <div class="mini">例：「ポイントご利用できますが、今日のお会計で使いますか？」</div>
+            </div>
+            <div class="branch">
+              <h4>〇「ない」</h4>
+              <p>→ 次へ（②へ）</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- ② Q2 -->
+      <details class="flow-step type-apply">
+        <summary>
+          <div class="flow-badge">②</div>
+          <div>
+            <div class="flow-headline">
+              <p class="flow-title">「カード持っていない」→ 申込の可否チェック（スマホ確認）</p>
+            <p class="flow-say">「ちなみに今日スマホお持ちですか？」</p>
+                          <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+            </div>
+          </div>
+        </summary>
+
+        <div class="flow-body">
+          <div class="branch-grid">
+            <div class="branch">
+              <h4>✖スマホなし</h4>
+              <p>「丸井店舗やインターネットで入会できるので、もしご興味あればまたの機会に」</p>
+              <div class="mini">※今回はスマホ入会のみのため、ここで終了（追わない）</div>
+            </div>
+            <div class="branch">
+              <h4>〇スマホあり</h4>
+              <p>→ 次へ（③へ）</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- ③ Q3 -->
+      <details class="flow-step type-apply">
+        <summary>
+          <div class="flow-badge">③</div>
+          <div>
+            <div class="flow-headline">
+              <p class="flow-title">スマホあり → その場申込の提案（デザイン提示）</p>
+            <p class="flow-say">「スマホがあれば、この場で東方デザインのカード作れます。お作りしましょうか？」</p>
+                        <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+            </div>
+                      </div>
+        </summary>
+
+        <div class="flow-body">
+
+          <div class="branch-grid">
+            <div class="branch">
+              <h4>✖きっぱり断る（Noが明確）</h4>
+              <p>「承知しました！また気が向いたらいつでもどうぞ〜」</p>
+              <div class="mini">※終了（深追いしない）</div>
+            </div>
+
+            <div class="branch">
+              <h4>〇止まる・考える（迷いがある）</h4>
+              <p>→ 次の「限定特典」を短く提示（④へ）</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- ④ D -->
+      <details class="flow-step type-benefit">
+        <summary>
+          <div class="flow-badge">④</div>
+          <div>
+            <div class="flow-headline">
+              <p class="flow-title">止まる・考える（迷いがある）→ 限定特典で背中押し</p>
+            <p class="flow-say">「コミケ会場で入会した方だけの限定特典が付くんですよ」</p>
+                    <div class="flow-body">
+          <p class="flow-note">※ここで特典の現物を見せる</p>
+
+          <p class="flow-say">「カード自体はいつでも作れるんですが、この特典が付くのはコミケ会場の今回限りなんです」</p>
+          <p class="flow-say" style="margin-top:10px;">「よかったら、今このまま作りますか？（作らなくても全然大丈夫です）」</p>
+                        <span class="flow-tap">タップで開く <span class="flow-chev" aria-hidden="true"></span></span>
+            </div>
+                      </div>
+        </summary>
+
+
+          <div class="branch-grid" style="margin-top:10px;">
+            <div class="branch">
+              <h4>断る</h4>
+              <p>「承知しました！また気になったら声かけてください」</p>
+              <div class="mini">※終了（深追いしない）</div>
+            </div>
+            <div class="branch">
+              <h4>作りたい気持ち強め</h4>
+              <p>→ ⑤へ（説明フェーズ）</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- ⑤ E -->
+      <details class="flow-step type-explain">
+        <summary>
+          <div class="flow-badge">⑤</div>
+          <div>
+            <div class="flow-headline">
+              <p class="flow-title">エポスカードの必須の説明</p>
+            <p class="flow-say">「エポスカードについてご説明しますね！」</p>
+          </div>
+        </summary>
+
+      </details>
+        
+          <p class="flow-say" style="margin-top:10px;">「ここまでで気になる点ありますか？」</p>
+          <p class="flow-note"><span class="endpill">✅ OKなら手続きへ</span></p>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="btnrow">
+      <a class="btn secondary small" href="#top">↑ 上に戻る</a>
+      <a class="btn secondary small" href="#goods">↓ 次：販売グッズへ</a>
+    </div>
+  </div>
+</section>
+
+<!-- 作品概要（25周年強調版） -->
+<section class="section" id="summary">
+  <div class="card summary-card">
+    <div class="summary-head">
+      <h2 class="h2" style="margin:0;">
+        <span class="i">📘</span> 作品概要
+      </h2>
+      <span class="anniv">🎉 25周年</span>
+    </div>
+
+    <p class="summary-lead">
+      東方Projectは、<strong>弾幕シューティングゲーム発</strong>の作品群。<br>
+      <strong>二次創作文化が非常に大きい</strong>ことで知られ、音楽・イラスト・動画など多方面で愛されています。
+    </p>
+
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="k">🎮 ルーツ</div>
+        <div class="v">もともとは<strong>弾幕シューティングゲーム</strong></div>
+      </div>
+
+      <div class="summary-item">
+        <div class="k">🧩 文化</div>
+        <div class="v"><strong>二次創作が巨大</strong>（同人・音楽・動画など）</div>
+      </div>
+
+      <div class="summary-item">
+        <div class="k">📺 最近の入口</div>
+        <div class="v"><strong>ゆっくり実況</strong>で<strong>霊夢・魔理沙</strong>が特に人気</div>
+      </div>
+    </div>
+
+
+    <div class="btnrow">
+      <a class="btn" href="https://touhou-x.jp/" target="_blank" rel="noopener noreferrer">↗ 公式サイトを見る</a>
+      <a class="btn secondary" href="#cardflow">カード案内の台本へ</a>
+      <a class="btn secondary" href="#top">↑ 上に戻る</a>
+    </div>
+  </div>
+</section>
+
+    </section>
+
+    <!-- 今回販売グッズ -->
+    <section class="section" id="goods">
       <div class="card">
-        <h2 class="h2"><span class="i">📘</span> 作品概要</h2>
-        <p class="text">
-          「東方Project」は、同人ゲーム発のシリーズ作品（代表：弾幕シューティング）。舞台は「幻想郷」。
-          キャラクターと音楽人気が強く、二次創作文化も非常に大きい作品です。
-          <span class="muted">※この説明はダミー例です（実際の紹介文に差し替え）。</span>
+        <h2 class="h2"><span class="i">🛍️</span> 今回販売グッズ</h2>
+        <p class="sub">
+          マルイのアニメ × 東方Project｜<strong>丸井オリジナルで作成</strong>｜テーマ：<strong>「年越し」「正月」</strong><br>
+          ※購入制限や内容は変更の可能性あり。最新は
+          <a class="inline-link" href="https://x.com/marui_goods" target="_blank" rel="noopener noreferrer">X @marui_goods</a>
+          を確認。
         </p>
 
+        <div class="goods-grid">
+          <div class="goods-card">
+            <h3>そばにいる年越しセット <span class="price">11,000円(税込)</span></h3>
+            <img class="goodsimg" src="touhou/image/goods_soba.png" alt="そばにいる年越しセット 画像">
+            <p class="note"><strong>セット内容</strong>（全部違う）</p>
+            <ul class="goods-items">
+              <li>ビックアクスタ</li>
+              <li>アクリルカップ麺蓋おさえ</li>
+              <li>B2タペストリー</li>
+              <li>ポストカード</li>
+              <li>缶バッチ3個セット</li>
+              <li><strong>※ショッパー付き</strong></li>
+            </ul>
+            <p class="note">メモ：このセットの<strong>使用イラストは「寝正月セット」と別</strong></p>
+          </div>
+
+          <div class="goods-card">
+            <h3>一緒にまどろむ寝正月セット <span class="price">11,000円(税込)</span></h3>
+            <img class="goodsimg" src="touhou/image/goods_oshogatsu.png" alt="一緒にまどろむ寝正月セット 画像">
+            <p class="note"><strong>セット内容</strong>（全部違う）</p>
+            <ul class="goods-items">
+              <li>Tシャツ</li>
+              <li>クリアポスター3枚セット</li>
+              <li>缶バッチ3個セット</li>
+              <li>選べるスマホスタンド</li>
+              <li><strong>※ショッパー付き</strong></li>
+            </ul>
+            <p class="note">メモ：このセットの<strong>使用イラストは「年越しセット」と別</strong></p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div><strong>プッシュポイント</strong></div>
+          <ul class="goods-items" style="margin-top:8px;">
+            <li><strong>書き下ろしイラスト</strong></li>
+            <li><strong>丸井オリジナルコラボグッズ</strong></li>
+            <li><strong>ここでしか手に入らない</strong></li>
+          </ul>
+          <div class="small">補足：2セットで<strong>中身も使用イラストも別</strong>なので、推し・好みで案内を分けやすい。</div>
+        </div>
+
         <div class="btnrow">
-          <a class="btn" href="https://touhou-x.jp/" target="_blank" rel="noopener noreferrer">↗ 公式サイトを見る</a>
-          <a class="btn secondary" href="#card">申込案内へ</a>
+          <a class="btn secondary small" href="#cardinfo">↓ 次：カード券面・特典へ</a>
+          <a class="btn secondary small" href="#top">↑ 上に戻る</a>
         </div>
       </div>
     </section>
 
-<!-- 今回販売グッズ -->
-<section class="section" id="goods">
-  <div class="card">
-    <h2 class="h2"><span class="i">🛍️</span> 今回販売グッズ</h2>
-    <p class="sub">
-      マルイのアニメ × 東方Project｜<strong>丸井オリジナルで作成</strong>｜テーマ：<strong>「年越し」「正月」</strong><br>
-      ※購入制限や内容は変更の可能性あり。最新は
-      <a class="inline-link" href="https://x.com/marui_goods" target="_blank" rel="noopener noreferrer">X @marui_goods</a>
-      を確認。
-    </p>
-
-    <div class="goods-grid">
-      <!-- グッズ1 -->
-      <div class="goods-card">
-        <h3>
-          そばにいる年越しセット
-          <span class="price">11,000円(税込)</span>
-        </h3>
-
-        <!-- ✅ ここが重要：フォルダは touhou/image -->
-        <img class="goodsimg" src="touhou/image/goods_soba.png" alt="そばにいる年越しセット 画像">
-
-        <p class="note"><strong>セット内容</strong>（全部違う）</p>
-        <ul class="goods-items">
-          <li>ビックアクスタ</li>
-          <li>アクリルカップ麺蓋おさえ</li>
-          <li>B2タペストリー</li>
-          <li>ポストカード</li>
-          <li>缶バッチ3個セット</li>
-          <li><strong>※ショッパー付き</strong></li>
-        </ul>
-
-        <p class="note">メモ：このセットの<strong>使用イラストは「寝正月セット」と別</strong></p>
-      </div>
-
-      <!-- グッズ2 -->
-      <div class="goods-card">
-        <h3>
-          一緒にまどろむ寝正月セット
-          <span class="price">11,000円(税込)</span>
-        </h3>
-
-        <!-- ✅ ここが重要：フォルダは touhou/image -->
-        <img class="goodsimg" src="touhou/image/goods_oshogatsu.png" alt="一緒にまどろむ寝正月セット 画像">
-
-        <p class="note"><strong>セット内容</strong>（全部違う）</p>
-        <ul class="goods-items">
-          <li>Tシャツ</li>
-          <li>クリアポスター3枚セット</li>
-          <li>缶バッチ3個セット</li>
-          <li>選べるスマホスタンド</li>
-          <li><strong>※ショッパー付き</strong></li>
-        </ul>
-
-        <p class="note">メモ：このセットの<strong>使用イラストは「年越しセット」と別</strong></p>
-      </div>
-    </div>
-
-    <div class="callout">
-      <div><strong>プッシュポイント</strong></div>
-      <ul class="goods-items" style="margin-top:8px;">
-        <li><strong>書き下ろしイラスト</strong></li>
-        <li><strong>丸井オリジナルコラボグッズ</strong></li>
-        <li><strong>ここでしか手に入らない</strong></li>
-      </ul>
-      <div class="small">補足：2セットで<strong>中身も使用イラストも別</strong>なので、推し・好みで案内を分けやすい。</div>
-    </div>
-
-    <div class="callout">
-      <div>
-        <strong>購入制限：</strong>おひとりさま各<strong>2点</strong>（状況に応じて<strong>変更・解除</strong>の可能性あり）
-      </div>
-      <div class="small">
-        最新情報は
-        <a class="inline-link" href="https://x.com/marui_goods" target="_blank" rel="noopener noreferrer">@marui_goods</a>
-        を確認。
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-    <!-- ★ここに入れる（作品概要 と 主要キャラ の間） -->
-    <!-- カード券面・特典-->
+    <!-- カード券面・特典 -->
     <section class="section" id="cardinfo">
       <div class="card">
         <h2 class="h2"><span class="i">🪪</span> カード券面・特典</h2>
@@ -607,22 +1241,14 @@
         </p>
 
         <div class="cards-grid">
-          <!-- カード1 -->
           <div class="mini-card">
-            <h3>
-              カード① 人気キャラクター3人デザイン
-              <span class="tag">lack氏 書き下ろし</span>
-            </h3>
+            <h3>カード① 人気キャラクター3人デザイン <span class="tag">lack氏 書き下ろし</span></h3>
             <img class="cardimg" src="touhou/image/card1.png" alt="カード券面（lack氏 書き下ろし）">
             <p class="kvline">案内の一言：<strong>「推しがいる・絵柄重視ならこちら」</strong></p>
           </div>
 
-          <!-- カード2 -->
           <div class="mini-card">
-            <h3>
-              カード② ちびキャラ勢ぞろいデザイン
-              <span class="tag">ちびキャラ集合</span>
-            </h3>
+            <h3>カード② ちびキャラ勢ぞろいデザイン <span class="tag">ちびキャラ集合</span></h3>
             <img class="cardimg" src="touhou/image/card2.png" alt="カード券面（ちびキャラ勢ぞろい）">
             <p class="kvline">案内の一言：<strong>「かわいい系・箱推しならこちら」</strong></p>
           </div>
@@ -641,224 +1267,32 @@
 
         <div class="btnrow" style="margin-top:12px;">
           <a class="btn secondary small" href="https://www.eposcard.co.jp/gecard/touhouproject/index.html" target="_blank" rel="noopener noreferrer">↗ 公式情報を確認</a>
+          <a class="btn secondary small" href="#cardflow">カード案内の台本へ</a>
+          <a class="btn secondary small" href="#top">↑ 上に戻る</a>
         </div>
       </div>
     </section>
 
-    <!-- 主要キャラクターTOP3 -->
-    <section class="section" id="chara">
-      <div class="card">
-        <h2 class="h2"><span class="i">👥</span> 主要キャラクターTOP3</h2>
-        <ol class="rank">
-          <li>
-            <div class="num">1</div>
-            <div>
-              <strong>Aちゃん：主人公核</strong>
-              <span>会話の入り口：推し確認「Aちゃん派？Bちゃん派？」（ダミー）</span>
-            </div>
-          </li>
-          <li>
-            <div class="num">2</div>
-            <div>
-              <strong>Bちゃｎ：人気上位の定番キャラクター（ダミー）</strong>
-              <span>会話の入り口：グッズの刺さりやすいワードを用意（ダミー）</span>
-            </div>
-          </li>
-          <li>
-            <div class="num">3</div>
-            <div>
-              <strong>Ｃちゃん：クールで支持が厚いキャラクター（ダミー）</strong>
-              <span>会話の入り口：「どの作品から？」の質問が使える（ダミー）</span>
-            </div>
-          </li>
-        </ol>
-        <p class="sub" style="margin-top:10px;">
-          ※TOP3は仮。今回の券面キャラ／当日扱うグッズに合わせて差し替えてください。
-        </p>
-      </div>
-    </section>
+    <!-- 以下は必要なら後で続けてOK（いまは最低限の動作＆デザイン修正を優先） -->
 
-    <!-- ファン層の特徴 -->
-    <section class="section" id="fans">
-      <div class="card">
-        <h2 class="h2"><span class="i">🎯</span> ファン層の特徴</h2>
-        <ul class="bullets">
-          <li><span class="b-dot"></span><div>30~50代のコアな男性ファンが多め</div></li>
-        </ul>
-      </div>
-    </section>
+  </div>
 
+  <script>
+    // 目次が「必ず動く」ようにする（href="#id" のクリックを強制スクロール）
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const hash = a.getAttribute('href');
+        if (!hash || hash === '#') return;
 
-    <!-- 会話のきっかけポイント（ブルー） -->
-    <section class="section" id="triggers">
-      <div class="card tint-blue">
-        <h2 class="h2"><span class="i">🌟</span> 会話のきっかけポイント</h2>
-        <ul class="trigger">
-          <li>
-            <span class="icon">💭</span>
-            <div class="txt">「推しいます？」で入る<span class="subtxt">（最短で熱量を拾う／ダミー）</span></div>
-          </li>
-          <li>
-            <span class="icon">💭</span>
-            <div class="txt">「どの作品から？」で入る<span class="subtxt">（会話が続く／ダミー）</span></div>
-          </li>
-          <li>
-            <span class="icon">💭</span>
-            <div class="txt">「この券面かわいくないですか？」で入る<span class="subtxt">（付き添いにも効く／ダミー）</span></div>
-          </li>
-          <li>
-            <span class="icon">💭</span>
-            <div class="txt">迷った人は「QRだけどうぞ」<span class="subtxt">（引き止めない／ダミー）</span></div>
-          </li>
-        </ul>
-      </div>
-    </section>
+        const id = hash.slice(1);
+        const el = document.getElementById(id);
+        if (!el) return; // 飛び先が無ければ何もしない（壊さない）
 
-    <!-- 当日トーク -->
-    <section class="section" id="talk">
-      <div class="card">
-        <h2 class="h2"><span class="i">🗣️</span> 当日トーク（読み上げOK・ダミー）</h2>
-
-        <div class="talk">
-          <h3>30秒トーク <span class="pill">混雑用・固定</span></h3>
-          <p class="quote" id="talk30">「今日のおすすめは（ダミー）◯◯グッズです。もしよければ、東方デザインのカード（ダミー）もあって、今は特典（ダミー）もあります。QRで30秒で概要だけ見れます—よかったらどうぞ！」</p>
-          <div class="btnrow">
-            <button class="btn secondary small" type="button" data-copy="#talk30">コピーする</button>
-            <a class="btn small" href="#card">申込案内へ</a>
-          </div>
-        </div>
-
-        <div class="hr"></div>
-
-        <div class="talk">
-          <h3>60秒トーク <span class="pill">空いてる時</span></h3>
-          <p class="quote" id="talk60">「東方は同人ゲーム発でキャラ数が多く、“推し文化”が強い作品です。音楽人気も高くイベントも盛り上がってます。今日のグッズは（ダミー）◯◯が人気で、推しがいる人は刺さりやすいです。
-あと東方券面のカード（ダミー）があって（ダミー）年会費無料＋特典があります。今は混んでるので、まずはQRだけお渡ししますね。あとでゆっくりで大丈夫です！」</p>
-          <div class="btnrow">
-            <button class="btn secondary small" type="button" data-copy="#talk60">コピーする</button>
-            <a class="btn secondary small" href="#gaeshi">切り返しへ</a>
-          </div>
-        </div>
-
-        <p class="sub" style="margin-top:12px;">
-          ※トーク文はダミーです。特典・条件は公式情報に合わせて差し替え、断定表現に注意してください。
-        </p>
-      </div>
-    </section>
-
-    <!-- 反応別 切り返し -->
-    <section class="section" id="gaeshi">
-      <div class="card">
-        <h2 class="h2"><span class="i">🧩</span> 反応別 切り返し（押して開く・ダミー）</h2>
-
-        <details>
-          <summary>「急いでて…」 <span class="chev" aria-hidden="true"></span></summary>
-          <div class="body">
-            <p class="quote" id="g1">「了解です！URLだけお渡しします。あとで見返せる“当日まとめ”になってます！」</p>
-            <div class="btnrow"><button class="btn secondary small" type="button" data-copy="#g1">コピー</button></div>
-          </div>
-        </details>
-
-        <details>
-          <summary>「カードはいいかな…」 <span class="chev" aria-hidden="true"></span></summary>
-          <div class="body">
-            <p class="quote" id="g2">「全然OKです！グッズだけでもぜひ。もし券面が気になったら、情報だけここにまとまってます！」</p>
-            <div class="btnrow"><button class="btn secondary small" type="button" data-copy="#g2">コピー</button></div>
-          </div>
-        </details>
-
-        <details>
-          <summary>「面倒そう…」 <span class="chev" aria-hidden="true"></span></summary>
-          <div class="body">
-            <p class="quote" id="g3">「（ダミー）スマホで完結で最短です。今は混んでるので、まずはQRだけどうぞ！」</p>
-            <div class="btnrow"><button class="btn secondary small" type="button" data-copy="#g3">コピー</button></div>
-          </div>
-        </details>
-      </div>
-    </section>
-
-
-
-    <!-- 15秒投稿 -->
-    <section class="section" id="post">
-      <div class="card">
-        <h2 class="h2"><span class="i">📝</span> 15秒投稿（気づき回収・ダミー保存）</h2>
-        <p class="sub">※このフォームは検証用ダミー実装です（ブラウザのlocalStorageに保存）。実運用はPower Apps/Forms/SharePoint等へ接続してください。</p>
-
-        <form id="postForm">
-          <div class="row">
-            <div>
-              <label for="situation">状況</label>
-              <select id="situation" required>
-                <option value="">選択してください</option>
-                <option>混雑</option>
-                <option>通常</option>
-                <option>閑散</option>
-              </select>
-            </div>
-            <div>
-              <label for="audience">相手タイプ</label>
-              <select id="audience" required>
-                <option value="">選択してください</option>
-                <option>東方ファン</option>
-                <option>付き添い</option>
-                <option>通りすがり</option>
-                <option>コスプレ</option>
-                <option>その他</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row">
-            <div>
-              <label for="pattern">使った型</label>
-              <select id="pattern" required>
-                <option value="">選択してください</option>
-                <option>30秒トーク</option>
-                <option>60秒トーク</option>
-                <option>QRだけ渡し</option>
-                <option>推し確認から</option>
-              </select>
-            </div>
-            <div>
-              <label for="result">結果</label>
-              <select id="result" required>
-                <option value="">選択してください</option>
-                <option>申込</option>
-                <option>検討（URL渡し）</option>
-                <option>離脱</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label for="note">一言（任意）：「刺さった一言」or「詰まったポイント」</label>
-            <textarea id="note" placeholder="例）「推しいます？」が強かった／特典の条件で詰まった（ダミー）"></textarea>
-          </div>
-
-          <div class="btnrow">
-            <button class="btn small" type="submit">投稿する（ダミー保存）</button>
-            <button class="btn secondary small" type="button" id="exportBtn">エクスポート（JSON）</button>
-            <button class="btn secondary small" type="button" id="clearBtn">全消去</button>
-          </div>
-
-          <p class="sub" id="countText" style="margin:6px 0 0;">保存件数：0（ダミー）</p>
-        </form>
-
-        <div class="hr"></div>
-        <a class="chip" href="#top">↑ 上に戻る</a>
-      </div>
-    </section>
-
-
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', hash);
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
