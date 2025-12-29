@@ -8,8 +8,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>コミケ 東方｜当日カンペ（検証用ダミー）</title>
-  <meta name="description" content="コミケ当日人員向け：東方Projectの当日カンペ（検証用ダミー）" />
+  <title>コミケ 東方）</title>
+  <meta name="description" content="コミケ当日人員向け：東方Project）" />
   <style>
     :root{
       --bg:#f6f7fb;
@@ -489,14 +489,6 @@
     <!-- ★戻り先（#top）を作る -->
     <div id="top"></div>
 
-    <!-- ✅ ダミー明記（最上部） -->
-    <div class="notice">
-      <div class="icon">⚠️</div>
-      <p>
-        <strong>検証用ダミー：</strong>
-        このページ内の「カード条件・特典・数値・トーク例・リンク」は<strong>すべて架空</strong>です。実運用前に必ず公式情報へ差し替えてください。
-      </p>
-    </div>
 
     <section class="section" id="hero">
   <div class="hero">
@@ -691,26 +683,11 @@
       <div class="card">
         <h2 class="h2"><span class="i">🎯</span> ファン層の特徴</h2>
         <ul class="bullets">
-          <li><span class="b-dot"></span><div>推しキャラ文化が強く、キャラ名に反応しやすい（ダミー）</div></li>
-          <li><span class="b-dot"></span><div>音楽・アレンジ文化が強い（曲の話題が刺さる）（ダミー）</div></li>
-          <li><span class="b-dot"></span><div>作品理解が深い層もいるため、浅い説明は避ける（ダミー）</div></li>
-          <li><span class="b-dot"></span><div>グッズ購買意欲が高い（ダミー）</div></li>
+          <li><span class="b-dot"></span><div>30~50代のコアな男性ファンが多め</div></li>
         </ul>
       </div>
     </section>
 
-    <!-- ファンと楽しく話すためのヒント（ピンク） -->
-    <section class="section" id="hints">
-      <div class="card tint-pink">
-        <h2 class="h2"><span class="i">💬</span> ファンと楽しく話すためのヒント</h2>
-        <ul class="hintlist">
-          <li><span class="icon">💡</span><div>最初からカードに入らず、<strong>会話→共感→自然に導入</strong>（ダミー）</div></li>
-          <li><span class="icon">💡</span><div>ガチ勢には説明より、<strong>推し・曲・二次創作</strong>など相手の熱量領域に寄せる（ダミー）</div></li>
-          <li><span class="icon">💡</span><div>人気グッズは「限定感」を強調しつつ、押し売りはしない（ダミー）</div></li>
-          <li><span class="icon">💡</span><div>キャラ名・作品名は間違えない（不安なら言わない）（ダミー）</div></li>
-        </ul>
-      </div>
-    </section>
 
     <!-- 会話のきっかけポイント（ブルー） -->
     <section class="section" id="triggers">
@@ -873,107 +850,10 @@
       </div>
     </section>
 
-    <footer>
-      <p style="margin:0;">
-        <strong>【ダミー明記】</strong>このページ内のカード情報・特典・数値・トーク例・リンクはすべて検証用の架空情報です。実運用前に必ず公式情報へ差し替えてください。
-      </p>
-    </footer>
-  </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script>
-    // ===== Toast =====
-    const toast = (msg) => {
-      const el = document.getElementById('toast');
-      el.textContent = msg;
-      el.classList.add('show');
-      clearTimeout(window.__t);
-      window.__t = setTimeout(() => el.classList.remove('show'), 1600);
-    };
-
-    // ===== Copy =====
-    document.addEventListener('click', async (e) => {
-      const btn = e.target.closest('[data-copy]');
-      if(!btn) return;
-      const sel = btn.getAttribute('data-copy');
-      const target = document.querySelector(sel);
-      if(!target) return;
-      const text = target.innerText || target.textContent || '';
-      try{
-        await navigator.clipboard.writeText(text);
-        toast('コピーしました');
-      }catch{
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        toast('コピーしました（簡易）');
-      }
-    });
-
-    // ===== Post form (dummy localStorage) =====
-    const KEY = 'touhou_comike_posts_dummy_v1';
-    const form = document.getElementById('postForm');
-    const countText = document.getElementById('countText');
-
-    const loadPosts = () => {
-      try { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
-      catch { return []; }
-    };
-    const savePosts = (arr) => localStorage.setItem(KEY, JSON.stringify(arr));
-
-    const updateCount = () => {
-      const n = loadPosts().length;
-      countText.textContent = `保存件数：${n}（ダミー）`;
-    };
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const post = {
-        ts: new Date().toISOString(),
-        situation: document.getElementById('situation').value,
-        audience: document.getElementById('audience').value,
-        pattern: document.getElementById('pattern').value,
-        result: document.getElementById('result').value,
-        note: (document.getElementById('note').value || '').trim()
-      };
-      if(!post.situation || !post.audience || !post.pattern || !post.result){
-        toast('必須項目を選択してください');
-        return;
-      }
-      const arr = loadPosts();
-      arr.push(post);
-      savePosts(arr);
-      form.reset();
-      updateCount();
-      toast('投稿ありがとう！（ダミー保存）');
-    });
-
-    document.getElementById('exportBtn').addEventListener('click', () => {
-      const arr = loadPosts();
-      const blob = new Blob([JSON.stringify(arr, null, 2)], {type:'application/json'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'touhou_comike_posts_dummy.json';
-      a.click();
-      URL.revokeObjectURL(url);
-      toast('JSONを書き出しました');
-    });
-
-    document.getElementById('clearBtn').addEventListener('click', () => {
-      localStorage.removeItem(KEY);
-      updateCount();
-      toast('全消去しました');
-    });
-
-    updateCount();
-  </script>
 </body>
 </html>
+
 
 
 
